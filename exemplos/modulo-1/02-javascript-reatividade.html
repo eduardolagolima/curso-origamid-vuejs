@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Curso Origamid Vue.js Completo</title>
+</head>
+
+<body>
+  <div>
+    <p>Camisas - <span class="precoUnitario"></span></p>
+    <button class="adicionarItem">Adicionar</button>
+    <button class="removerItem">Remover</button>
+    <span class="quantidadeTotal"></span>
+    <p>Total: <span class="precoTotal"></span></p>
+  </div>
+  <script>
+    const dados = {
+      precoUnitario: 49,
+      precoTotal: 0,
+      quantidadeTotal: 0
+    }
+
+    const precoUnitario = document.querySelector(".precoUnitario");
+    const adicionarItem = document.querySelector(".adicionarItem");
+    const removerItem = document.querySelector(".removerItem");
+    const quantidadeTotal = document.querySelector(".quantidadeTotal");
+    const precoTotal = document.querySelector(".precoTotal");
+
+    precoUnitario.innerText = dados.precoUnitario;
+    quantidadeTotal.innerText = dados.quantidadeTotal;
+    precoTotal.innerText = dados.precoTotal;
+
+    function incrementar() {
+      dados.quantidadeTotal++;
+      atualizarUI();
+    }
+
+    function diminuir() {
+      dados.quantidadeTotal--;
+      atualizarUI();
+    }
+
+    function atualizarUI() {
+      quantidadeTotal.innerText = dados.quantidadeTotal;
+      precoTotal.innerText = dados.precoUnitario * dados.quantidadeTotal;
+    }
+
+    adicionarItem.addEventListener("click", incrementar);
+    removerItem.addEventListener("click", diminuir);
+  </script>
+</body>
+
+</html>

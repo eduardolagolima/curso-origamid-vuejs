@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Curso Origamid Vue.js Completo</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <button @click="contador++">Adicionar</button>
+    <p>{{contador}}</p>
+  </div>
+
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        contador: 0
+      },
+      watch: {
+        contador(valorNovo, valorAntigo) {
+          console.log("valorNovo: " + valorNovo);
+          console.log("valorAntigo: " + valorAntigo);
+
+          if (this.contador == 10)
+            alert("O contador chegou a 10!");
+        }
+      }
+    });
+  </script>
+
+</body>
+
+</html>

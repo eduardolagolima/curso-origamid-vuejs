@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Curso Origamid Vue.js Completo</title>
+</head>
+
+<body>
+  <div id="app">
+    {{instrumento}}
+    <hr>
+    {{cor}}
+    <hr>
+    {{nomeCor}}
+    <hr>
+    {{nomeCorSetTimeOutErrado}}
+    <hr>
+    {{nomeCorSetTimeOutCerto}}
+  </div>
+  <script>
+    // Exemplo de função construtora para entender como o Vue funciona
+    function VueClone(options) {
+      this.options = options;
+      this.el = document.querySelector(options.el);
+      this.data = options.data
+    }
+
+    const vmClone = new VueClone({
+      el: "#app",
+      data: {
+        instrumento: "Martelo"
+      }
+    });
+
+    // console.log(vmClone);
+
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        instrumento: "Violão",
+        cor: "Vermelho"
+      },
+      computed: {
+        nomeCor() {
+          // this se refere ao this do objeto Vue
+          return this.instrumento + " - " + this.cor;
+        },
+        // Não vai funcionar pois o this dentro da function se refere ao contexto do setTimeout
+        nomeCorSetTimeOutErrado() {
+          setTimeout(function () {
+            console.log(this.instrumento + " - " + this.cor);
+          }, 500);
+        },
+        // Vai funcionar pois a arrow function utiliza o contexto do pai, que nesse caso é objeto Vue
+        nomeCorSetTimeOutCerto() {
+          setTimeout(() => {
+            console.log(this.instrumento + " - " + this.cor);
+          }, 500);
+        }
+      }
+    });
+
+    // console.log(vm);
+  </script>
+</body>
+
+</html>

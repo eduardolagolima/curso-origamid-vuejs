@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Curso Origamid Vue.js Completo</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <p>{{mensagem}}</p>
+    <pre>{{dados}}</pre>
+  </div>
+
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        mensagem: "Batatinha",
+        dados: {}
+      },
+      methods: {
+        puxatGithub() {
+          fetch("https://api.github.com/users/eduardolago")
+            .then(r => r.json())
+            .then(r => this.dados = r);
+        }
+      },
+      beforeCreate() {
+        console.log("beforeCreate");
+        // Não existem ainda
+        console.log(this.mensagem);
+        //this.puxatGithub();
+      },
+      created() {
+        // Já existe
+        console.log("created");
+        console.log(this.mensagem);
+        this.puxatGithub();
+      },
+      beforeMount() {
+        console.log("beforeMount");
+        // Existe o DOM, porém ainda não processou as diretivas do Vue (Exemplo: {{}}, v-if, @click, etc...)
+        console.log(this.$el);
+      },
+      mounted() {
+        // Existe o DOM, e já tem todo o HTML processado
+        console.log("mounted");
+        console.log(this.$el);
+      }
+    });
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Curso Origamid Vue.js Completo</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <!-- Two-way-databinding (manda do DOM para o JS e vice-versa) -->
+    <input v-model="nome">
+
+    <!-- One-way-databinding (manda apenas do JS para o DOM) -->
+    <input :value="email">
+
+    <pre>Nome: {{nome}}</pre>
+    <pre>Email: {{email}}</pre>
+  </div>
+
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        nome: "Eduardo",
+        email: "eduardolago95@hotmail.com"
+      }
+    });
+  </script>
+
+</body>
+
+</html>

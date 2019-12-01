@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Curso Origamid Vue.js Completo</title>
+  <style>
+    .azul {
+      color: blue;
+    }
+
+    .vermelho {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="app">
+    <label for="checkbox">Receber e-mail</label>
+    <input type="checkbox" id="checkbox" v-model="checkbox">
+
+    <hr>
+
+    <label :class="cor">Cor</label>
+    <input type="radio" v-model="cor" value="azul">
+    <input type="radio" v-model="cor" value="vermelho">
+
+    <hr>
+
+    <select v-model="select">
+      <option disabled value="">Selecione um número</option>
+      <option value="1">Um</option>
+      <option value="2">Dois</option>
+      <option value="3">Três</option>
+    </select>
+  </div>
+
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        checkbox: true,
+        cor: "vermelho",
+        select: ""
+      }
+    });
+  </script>
+
+</body>
+
+</html>

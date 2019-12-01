@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Curso Origamid Vue.js Completo</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <ul>
+      <li v-for="carro in carros">{{carro.marca}} / {{carro.cor}}</li>
+    </ul>
+
+    <ul>
+      <li v-for="carro in carrosAzuis">{{carro.marca}} / {{carro.cor}}</li>
+    </ul>
+
+    <button @click="removerCarro">Remover carro</button>
+  </div>
+
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        carros: [
+          {
+            marca: "VW",
+            cor: "Azul"
+          },
+          {
+            marca: "Ford",
+            cor: "Preto"
+          },
+          {
+            marca: "Tesla",
+            cor: "Azul"
+          }
+        ]
+      },
+      computed: {
+        carrosAzuis() {
+          return this.carros.filter(({ cor }) => cor === "Azul")
+        }
+      },
+      methods: {
+        removerCarro() {
+          this.carros.pop();
+        }
+      }
+    });
+  </script>
+
+</body>
+
+</html>

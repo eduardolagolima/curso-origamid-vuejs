@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Curso Origamid Vue.js Completo</title>
+</head>
+
+<body>
+
+  <!--
+    Utilizando a API
+    https://api.iextrading.com/1.0/stock/aapl/quote
+
+    Crie um método que faça o fetch da resposta acima
+    O método deve ser ativado ao clique no botão Ver Preço
+
+    Coloque a resposta json do fetch em uma data e
+    mostre o valor de lalestPrice, latestTime e o
+    companyName na interface.
+
+    OBSERVAÇÃO: ADAPTEI O EXERCÍCIO POIS A API USADA NO CURSO NÃO ESTÁ MAIS FUNCIONANDO
+  -->
+
+  <div id="app">
+    <button @click="obterPosts">Obter posts</button>
+
+    <div v-for="post in posts">
+      <p><strong>ID:</strong> {{post.id}}</p>
+      <p><strong>Title:</strong> {{post.title}}</p>
+    </div>
+
+  </div>
+
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        posts: {}
+      },
+      methods: {
+        obterPosts() {
+          fetch("https://jsonplaceholder.typicode.com/posts")
+            .then(response => response.json())
+            .then(json => this.posts = json);
+        }
+      }
+    });
+  </script>
+
+</body>
+
+</html>

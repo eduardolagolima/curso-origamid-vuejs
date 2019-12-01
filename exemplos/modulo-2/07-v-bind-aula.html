@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Curso Origamid Vue.js Completo</title>
+  <style>
+    .azul     { color: blue;  }
+    .verde    { color: green; }
+    .vermelho { color: red;   }
+  </style>
+</head>
+
+<body>
+
+  <div id="app">
+    <a v-bind:href="link" target="_blank">Google</a>
+    <p v-bind:class="azul" class="active">Texto</p>
+    <p v-bind:class="comprou ? verde : 'vermelho'">Comprou</p>
+    <p v-bind:class="comprou ? 'vermelho' : verde">Não Comprou</p>
+  </div>
+
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        link: "https://google.com",
+        azul: "azul",
+        verde: "verde",
+        comprou: true
+      }
+    });
+  </script>
+
+</body>
+
+</html>

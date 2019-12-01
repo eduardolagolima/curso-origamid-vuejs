@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Curso Origamid Vue.js Completo</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <ul>
+      <li v-for="value in arrTecnologias">{{value}}</li>
+    </ul>
+    <ul>
+      <li v-for="(value, index) in arrTecnologias">{{index}} / {{value}}</li>
+    </ul>
+
+    <ul>
+      <li v-for="(value, index) in objTecnologias['front-end']">{{index}} / {{value}}</li>
+    </ul>
+
+    <ul>
+      <li v-for="(value, index) in objTecnologias['back-end']">{{index}} / {{value}}</li>
+    </ul>
+
+    <ul>
+      <li v-for="(value, key, index) in objTecnologias">{{index}} / {{key}} / {{value}}</li>
+    </ul>
+
+    <ul>
+      <li v-for="estado in estados">{{estado.nome}} - {{estado.populacao}}</li>
+    </ul>
+
+    <!-- Ignora os demais índices do objeto -->
+    <ul>
+      <li v-for="{nome} in estados">{{nome}}</li>
+    </ul>
+
+    <!-- Ignora os demais índices do objeto -->
+    <ul>
+      <li v-for="{nome, populacao} in estados">{{nome}} - {{populacao}}</li>
+    </ul>
+
+    <!-- O :key serve como um identificador para o VUE caso essa lista sofra alguma modificação -->
+    <ul>
+      <li v-for="({nome, populacao}, key) in estados" :key="nome">{{key.toUpperCase()}} / {{nome}} - {{populacao}}</li>
+    </ul>
+
+    <ul>
+      <li v-for="numero in 5">{{numero}}</li>
+    </ul>
+
+    <button @click="modificarSemReatividade">Modificar item (SEM reatividade)</button>
+    <hr>
+    <button @click="modificarComReatividade">Modificar item (COM reatividade)</button>
+    <hr>
+    <button @click="adicionar">Adicionar item</button>
+    <hr>
+    <button @click="remover">Remover item</button>
+    <hr>
+    <ul>
+      <li v-for="value in lista">{{value}}</li>
+    </ul>
+  </div>
+
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        arrTecnologias: ["HTML", "CSS", "JS", "PHP", "PYTHON"],
+        objTecnologias: {
+          "front-end": ["HTML", "CSS", "JS"],
+          "back-end": ["PHP", "PYTHON"]
+        },
+        estados: {
+          sp: {
+            populacao: "45 milhões",
+            nome: "São Paulo"
+          },
+          mg: {
+            populacao: "21 milhões",
+            nome: "Minas Gerais"
+          },
+          rj: {
+            populacao: "17 milhões",
+            nome: "Rio de Janeiro"
+          }
+        },
+        lista: ["Item 1", "Item 2", "Item 3"]
+      },
+      methods: {
+        adicionar() {
+          // funciona reatividade
+          this.lista.push("Item " + (this.lista.length + 1));
+        },
+        remover() {
+          // funciona reatividade
+          this.lista.pop();
+        },
+        modificarSemReatividade() {
+          // não funciona reatividade
+          this.lista[0] = "Primeiro Item";
+        },
+        modificarComReatividade() {
+          // funciona reatividade
+          // (array, índice, novo valor)
+          this.$set(this.lista, 0, "Primeiro Item");
+        }
+      }
+    });
+  </script>
+
+</body>
+
+</html>

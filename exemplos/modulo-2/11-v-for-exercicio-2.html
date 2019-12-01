@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Curso Origamid Vue.js Completo</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <button @click="obterCursos">Obter Cursos</button>
+
+    <div v-for="curso in cursos">
+      <h3>{{curso.curso}} - <a :href="curso.link" target="_blank">Link</a></h3>
+      <ul>
+        <li v-for="value in curso.aulas">
+          {{value.nome}}, {{value.tempo}}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        cursos: {}
+      },
+      methods: {
+        obterCursos() {
+          fetch("../arquivos-teste/cursos.json")
+            .then(r => r.json())
+            .then(r => this.cursos = r);
+        }
+      }
+    });
+  </script>
+  <!--
+    Use o arquivo json da aula, para listar os cursos e as matérias.
+  -->
+</body>
+
+</html>

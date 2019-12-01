@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Curso Origamid Vue.js Completo</title>
+  <style>
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    input, textarea {
+      flex: 1;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="app">
+    <form>
+      <label for="nome">Nome</label>
+      <input type="text" name="nome" id="nome" v-model="nome">
+      <label for="email">E-mail</label>
+      <input type="text" name="email" id="email" v-model="email">
+      <label for="telefone">Telefone</label>
+      <input type="text" name="telefone" id="telefone" v-model="telefone">
+      <label for="mensagem">Mensagem</label>
+      <textarea name="mensagem" id="mensagem" cols="30" rows="5"></textarea>
+      <input @click.prevent="enviado = !enviado" type="submit" value="Enviar"></input>
+    </form>
+    <div v-if="enviado">
+      <p>Nome: {{nome}}</p>
+      <p>E-mail: {{email}}</p>
+      <p>Telefone: {{telefone}}</p>
+      <p>Mensagem: {{mensagem}}</p>
+    </div>
+  </div>
+
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        nome: "",
+        email: "",
+        telefone: "",
+        mensagem: "",
+        enviado: false
+      }
+    });
+  </script>
+  <!-- 
+    2 - Crie um formulário com, nome, email, telefone e mensagem.
+    Ao clicar em enviar, as informações preenchidas no formulário
+    devem aparecer abaixo do mesmo. (previna o comportamento padrão do botão enviar)
+  -->
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Curso Origamid Vue.js Completo</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <div>{{link}}</div>
+    <hr>
+    <!-- Substitui tudo que tiver dentro da div -->
+    <div v-html="link"></div>
+
+    <!-- Substitui tudo que tiver dentro da div -->
+    <p>{{texto}} Lima</p>
+    <p v-text="texto"> Lima</p>
+
+    <hr>
+
+    <!-- v-once roda apenas quando carrega a tela -->
+    <p v-once>Valor Inicial: R$ {{valorInicial - valorGasto}},00</p>
+
+    <button @click="valorGasto += 5">Comprar produto R$ 5,00</button>
+
+    <p>Valor Gasto: R$ {{valorGasto}},00</p>
+
+    <p>Valor Final: R$ {{valorInicial - valorGasto}},00</p>
+  </div>
+
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        link: "<a href='https://www.google.com.br' target='_blank'>Link Google</a>",
+        texto: "Eduardo Lago",
+        valorInicial: 150,
+        valorGasto: 20
+      }
+    });
+  </script>
+
+</body>
+
+</html>

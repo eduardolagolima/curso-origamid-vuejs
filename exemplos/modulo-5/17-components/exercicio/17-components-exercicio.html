@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Curso Origamid Vue.js Completo</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <relacao-dolar-real></relacao-dolar-real>
+    <!-- <relacao-euro-real></relacao-euro-real> -->
+    <relacao-libra-real></relacao-libra-real>
+  </div>
+
+  <script type="module">
+    // Componente 1 registrado globalmente
+    import RelacaoDolarReal from "./RelacaoDolarReal.js";
+    Vue.component("RelacaoDolarReal", RelacaoDolarReal);
+
+    // Componente 3 registrado localmente na instância do vue
+    import RelacaoLibraReal from "./RelacaoLibraReal.js";
+
+    const vm = new Vue({
+      el: "#app",
+      components: {
+        RelacaoLibraReal
+      }
+    });
+  </script>
+  <!-- 
+    Crie uma tela com 3 diferentes Componentes.
+
+    Crie os componentes em arquivos separados e utilize import/export
+
+    O componente 1 deve ser registrado globalmente
+    O componente 2 deve ser registrado localmente dentro do componente 3.
+    O componente 3 deve ser registrado localmente da instância Vue.js
+  -->
+</body>
+
+</html>

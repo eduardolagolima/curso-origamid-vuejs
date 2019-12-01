@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Curso Origamid Vue.js Completo</title>
+  <style>
+    body {
+      height: 2000px;
+    }
+    p {
+      position: fixed;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="app">
+    <p>{{totalScroll}}</p>
+  </div>
+
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        totalScroll: 0
+      },
+      methods: {
+        handleScroll() {
+          this.totalScroll = window.scrollY;
+
+          if (this.totalScroll > 1000)
+            console.log("mostra botao para voltar ao topo");
+        }
+      },
+      created() {
+        // Qualquer evento pode ser colocado aqui
+        window.addEventListener("scroll", this.handleScroll);
+      }
+    });
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Curso Origamid Vue.js Completo</title>
+</head>
+
+<body>
+  <div id="app">
+    {{nome}}, {{idade}}, {{faculdade.possui}}, {{faculdade.curso}}
+  </div>
+
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        nome: "Eduardo Lago Lima",
+        idade: 23,
+        faculdade: {
+          possui: "Sim",
+          curso: "Sistemas de Informação"
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

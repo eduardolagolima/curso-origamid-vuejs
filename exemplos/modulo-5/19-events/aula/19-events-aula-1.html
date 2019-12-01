@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Curso Origamid Vue.js Completo</title>
+</head>
+
+<body>
+
+  <div id="app">
+    {{valorDoComponente}}
+    <botao @evento-personalizado="chamadaEventoPersonalizado"></botao>
+  </div>
+
+  <script>
+    const Botao = {
+      name: "Botao",
+      template: `<button @click="handleClick">Clique</button>`,
+      data() {
+        return {
+          valorDoComponente: 100
+        }
+      },
+      methods: {
+        handleClick() {
+          console.log("chamou evento do click");
+          this.$emit("evento-personalizado", (this.valorDoComponente + 100));
+        }
+      },
+      created() {
+        setTimeout(() => {
+          console.log("terminou setTimeout");
+          this.$emit("evento-personalizado", this.valorDoComponente);
+        }, 1000);
+      }
+    };
+
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        valorDoComponente: 0
+      },
+      components: {
+        Botao
+      },
+      methods: {
+        chamadaEventoPersonalizado(valorDoComponente) {
+          this.valorDoComponente = valorDoComponente;
+          console.log("chamou evento personalizado");
+        }
+      }
+    });
+  </script>
+
+</body>
+
+</html>

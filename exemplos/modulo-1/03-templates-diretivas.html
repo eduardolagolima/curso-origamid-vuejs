@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Curso Origamid Vue.js Completo</title>
+</head>
+
+<body>
+  <div id="app">
+    <h1>{{titulo}}</h1>
+    <p>{{conteudo}}</p>
+    <p>{{lado * lado}}</p>
+    <p>{{comprou ? "Comprado" : "Não Comprado"}}</p>
+    <a v-bind:href="href" target="_blank">{{href}}</a>
+    <!-- Apenas com os : funciona o v-bind -->
+    <hr>
+    <a :href="href" target="_blank">{{href}}</a>
+    <hr>
+    <!-- Com operador ternário -->
+    <a v-bind:href="comprou ? href : "https://google.com"" target="_blank">{{href}}</a>
+
+    <!-- Remove do DOM caso seja falso -->
+    <div v-if="comprou">
+      <h2>Comprou</h2>
+    </div>
+
+    <!-- Coloca um display:none caso seja falso -->
+    <div v-show="comprou">
+      <h2>Comprou</h2>
+    </div>
+
+    <div style="width: 100px; height: 100px;" v-bind:style="{background: cor}">Teste</div>
+
+    <input v-model="cor" type="color">
+    {{cor}}
+  </div>
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        titulo: "Curso de JavaScript",
+        conteudo: "Esse é o conteúdo",
+        lado: 5,
+        comprou: true,
+        href: "https://origamid.com",
+        cor: null
+      }
+    });
+  </script>
+</body>
+
+</html>

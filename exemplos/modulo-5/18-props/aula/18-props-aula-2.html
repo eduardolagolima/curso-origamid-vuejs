@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Curso Origamid Vue.js Completo</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <lista-produtos :produtos="produtos" titulo="Título"></lista-produtos>
+  </div>
+
+  <script>
+    const ItemListaProdutos = {
+      name: "ItemListaProdutos",
+      props: ["produto"],
+      template: `
+        <li>{{produto}}</li>
+      `
+    };
+
+    const ListaProdutos = {
+      name: "ListaProdutos",
+      props: ["produtos"],
+      components: {
+        ItemListaProdutos
+      },
+      template: `
+        <ul>
+          <item-lista-produtos 
+            v-for="produto in produtos"
+            :key="produto"
+            :produto="produto"
+          ></item-lista-produtos>
+        </ul>
+      `
+    };
+
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        produtos: ["Um", "Dois", "Três"]
+      },
+      components: {
+        ListaProdutos
+      }
+    });
+  </script>
+
+</body>
+
+</html>

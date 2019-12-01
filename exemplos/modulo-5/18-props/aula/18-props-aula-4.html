@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Curso Origamid Vue.js Completo</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <pre>{{total}}</pre>
+    <button @click="total++">Botão Contador Escopo Principal</button>
+    <botao-contador-sem-warning :valor="total"></botao-contador-sem-warning>
+    <botao-contador-com-warning :valor="total"></botao-contador-com-warning>
+  </div>
+
+  <script>
+    const BotaoContadorSemWarning = {
+      name: "BotaoContadorSemWarning",
+      props: {
+        "valor": Number
+      },
+      data() {
+        return {
+          valorAtual: this.valor
+        }
+      },
+      template: `
+        <button @click="valorAtual++">Sem warning, {{valorAtual}}</button>
+      `
+    };
+
+    const BotaoContadorComWarning = {
+      name: "BotaoContadorComWarning",
+      props: {
+        "valor": Number
+      },
+      template: `
+        <button @click="valor++">Com warning, {{valor}}</button>
+      `
+    };
+
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        total: 0
+      },
+      components: {
+        BotaoContadorSemWarning,
+        BotaoContadorComWarning
+      }
+    });
+  </script>
+
+</body>
+
+</html>

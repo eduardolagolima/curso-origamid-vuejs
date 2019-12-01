@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Curso Origamid Vue.js Completo</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <!-- O two-way-databinding acontece ao digitar (keypress) -->
+    v-model: <input type="text" v-model="vModel"> {{vModel}}
+    <hr>
+    <!-- O two-way-databinding acontece ao tirar o foco do campo (change) -->
+    v-model.lazy: <input type="text" v-model.lazy="vModelLazy"> {{vModelLazy}}
+    <hr>
+    <!-- Apenas números -->
+    v-model.number: <input type="text" v-model.number="vModelNumber"> {{vModelNumber}}
+    <hr>
+    <!-- Remove os espaços ao colar no change -->
+    v-model.trim: <input type="text" v-model.trim="vModelTrim"> {{vModelTrim}}
+  </div>
+
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        vModel: "",
+        vModelLazy: "",
+        vModelNumber: "",
+        vModelTrim: ""
+      }
+    });
+  </script>
+
+</body>
+
+</html>

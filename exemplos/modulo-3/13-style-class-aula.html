@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Curso Origamid Vue.js Completo</title>
+  <style>
+    .azul {
+      background-color: blue;
+      color: white;
+      text-align: center;
+    }
+
+    .uppercase {
+      text-transform: uppercase;
+    }
+
+    .negrito {
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="app">
+    <p :class="cor">Teste</p>
+    <p v-bind:class="cor">Teste</p>
+    <p :class="{azul: ativo, uppercase: uppercase}">Teste</p>
+    <button @click="ativo = !ativo">{{ativo ? 'Desativar' : 'Ativar'}}</button>
+    <p :class="[negrito, 'uppercase', {azul: ativo}]">Outro teste</p>
+    <hr>
+    <p :style="{color: 'red', backgroundColor: 'yellow', fontSize: '16px'}">Teste Style</p>
+    <p :style="{color: corStyle, backgroundColor: backgroundColorStyle, fontSize: fontSize + 'px'}">Teste Style</p>
+    <button @click="fontSize++">Aumentar</button>
+    <hr>
+    <button :style="botaoStyle">Botão com style vindo do data</button>
+    <hr>
+    <button :style="obterEstiloBotao">Botão com style vindo do computed</button>
+  </div>
+
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        cor: "azul",
+        ativo: true,
+        uppercase: true,
+        negrito: "negrito",
+        corStyle: "red",
+        backgroundColorStyle: "yellow",
+        fontSize: 16,
+        botaoStyle: {
+          color: "white",
+          backgroundColor: "tomato",
+          padding: "8px",
+          border: 0,
+          borderRadius: "5px",
+          fontFamily: "Verdana",
+          fontSize: "20px"
+        }
+      },
+      computed: {
+        obterEstiloBotao() {
+          return {
+            color: "white",
+            backgroundColor: "tomato",
+            padding: "8px",
+            border: 0,
+            borderRadius: "5px",
+            fontFamily: "Verdana",
+            fontSize: "20px"
+          }
+        }
+      }
+    });
+  </script>
+
+</body>
+
+</html>

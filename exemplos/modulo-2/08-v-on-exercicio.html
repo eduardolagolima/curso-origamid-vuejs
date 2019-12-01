@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Curso Origamid Vue.js Completo</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <ul>
+      <li><a @click.prevent="obterPost" href="https://jsonplaceholder.typicode.com/posts/1">Post 1</a></li>
+      <li><a @click.prevent="obterPost" href="https://jsonplaceholder.typicode.com/posts/2">Post 2</a></li>
+      <li><a @click.prevent="obterPost" href="https://jsonplaceholder.typicode.com/posts/3">Post 3</a></li>
+      <li><a @click.prevent="obterPost" href="https://jsonplaceholder.typicode.com/posts/4">Post 4</a></li>
+      <li><a @click.prevent="obterPost" href="https://jsonplaceholder.typicode.com/posts/5">Post 5</a></li>
+    </ul>
+
+    <pre>{{post}}</pre>
+  </div>
+
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        post: {}
+      },
+      methods: {
+        obterPost(event) {
+          const url = event.currentTarget.href;
+
+          fetch(url)
+            .then(response => response.json())
+            .then(json => this.post = json)
+        }
+      }
+    });
+  </script>
+
+  <!--
+    Utilizando API
+    https://api.iextrading.com/1.0/stock/aapl/quote
+
+    Adicione um evento de clique a cada <a> do html
+    acima e previna o comportamento padrão.
+
+    Faça o fetch dos dados do href ao click e mostre na
+    interface o companyName, latestPrice, marketCap
+  -->
+
+</body>
+
+</html>

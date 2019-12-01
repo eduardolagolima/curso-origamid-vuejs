@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Curso Origamid Vue.js Completo</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <botao-contador></botao-contador>
+  </div>
+
+  <script>
+    Vue.component("BotaoContador", {
+      data() {
+        return {
+          count: 0
+        }
+      },
+      template: `<button @click="contar">Contador: {{count}}</button>`,
+      methods: {
+        contar() {
+          this.count++;
+        }
+      }
+    });
+
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        
+      }
+    });
+  </script>
+
+</body>
+
+</html>

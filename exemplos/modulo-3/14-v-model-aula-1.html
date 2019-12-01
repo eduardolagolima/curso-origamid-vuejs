@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Curso Origamid Vue.js Completo</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <label for="inputText">inputText</label>
+    <input type="text" id="inputText" v-model="inputText">
+    <p>inputText: {{inputText}}</p>
+    <hr>
+    <label for="textarea">textarea</label>
+    <textarea name="textarea" id="textarea" cols="25" rows="2" v-model="textarea"></textarea>
+    <p>textarea: {{textarea}}</p>
+  </div>
+
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        inputText: null,
+        textarea: null
+      }
+    });
+  </script>
+
+</body>
+
+</html>

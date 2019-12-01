@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Curso Origamid Vue.js Completo</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <!-- Sintaxe utilizando o @ -->
+    <button @click="handleClick">Com @</button>
+    <!-- Sintaxe utilizando o v-on -->
+    <button v-on:click="handleClick">Com v-on</button>
+
+    <hr>
+
+    <button @click="ativo = !ativo">{{ativo ? 'Desativar' : 'Ativar'}}</button>
+
+    <p>{{ativo ? 'Ativo' : 'Inativo'}}</p>
+
+    <hr>
+
+    <!-- Simula o event.preventDefault() -->
+    <a href="https://www.google.com.br" target="_blank" @click.prevent="handleClick">Link Google</a>
+
+    <hr>
+
+    <!-- Simula o event.preventDefault() e chama a handleClick, a partir da segunda vez, 
+    executa o href normalmente -->
+    <a href="https://www.google.com.br" target="_blank" @click.prevent.once="handleClick">Link Google</a>
+
+    <hr>
+
+    <input @keyup="handleKey">
+
+    <hr>
+
+    <!-- Apenas uma tecla -->
+    <input @keyup.enter="handleKey">
+
+    <p @mousemove="handleMouse">mouseover</p>
+  </div>
+
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        ativo: true
+      },
+      methods: {
+        handleClick(e) {
+          console.log(e);
+        },
+        handleKey(e) {
+          console.log(e.key);
+        },
+        handleMouse(e) {
+          console.log(e.x);
+        }
+      }
+    });
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Curso Origamid Vue.js Completo</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <p v-if="logado">Usuário Logado</p>
+    <p v-else>Usuário Deslogado</p>
+
+    <p v-if="id === 1">Usuário 1</p>
+    <p v-else-if="id === 2">Usuário 2</p>
+    <p v-else=>Usuário não encontrado</p>
+
+    <hr>
+
+    <template v-if="logado">
+      <p>Usuário Logago</p>
+      <button @click="logado = false">Deslogar</button>
+    </template>
+    <template v-else>
+      <p>Usuário Deslogago</p>
+      <button @click="logado = true">Logar</button>
+    </template>
+
+    <hr>
+
+    <!-- v-if = remove do DOM -->
+    <p v-if="logado">Usuário Logado</p>
+    <!-- v-show = coloca um display:none; -->
+    <p v-show="logado">Usuário Logado</p>
+  </div>
+
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        logado: true,
+        id: 1
+      }
+    });
+  </script>
+
+</body>
+
+</html>

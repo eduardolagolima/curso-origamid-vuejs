@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Curso Origamid Vue.js Completo</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <input type="text" placeholder="cep" maxlength="8" v-model="cep">
+    <p>{{cep}}</p>
+    <pre>{{retorno}}</pre>
+  </div>
+
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        cep: null,
+        retorno: {}
+      },
+      watch: {
+        cep() {
+          if (this.cep.length === 8)
+          {
+            fetch(`https://viacep.com.br/ws/${this.cep}/json`)
+              .then(r => r.json())
+              .then(r => this.retorno = r);
+          }
+          else
+            this.retorno = {};
+        }
+      }
+    });
+  </script>
+
+</body>
+
+</html>

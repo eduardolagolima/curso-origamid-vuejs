@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Curso Origamid Vue.js Completo</title>
+</head>
+
+<body>
+
+  <div id="app">
+    {{contador}}
+    <!-- Maneira mais detalhada -->
+    <!-- <botao
+      :contador=contador
+      @update:contador="contador = $event"
+    ></botao> -->
+
+    <!-- Maneira simplificada -->
+    <botao
+      :contador.sync=contador
+    ></botao>
+  </div>
+
+  <script>
+    const Botao = {
+      name: "Botao",
+      props: ["contador"],
+      data() {
+        return {
+          contadorComponente: this.contador
+        }
+      },
+      template: `<button @click="incrementar">Contador {{contadorComponente}}</button>`,
+      methods: {
+        incrementar() {
+          this.contadorComponente++;
+          this.$emit("update:contador", this.contadorComponente);
+        }
+      }
+    };
+
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        contador: 0
+      },
+      components: {
+        Botao
+      }
+    });
+  </script>
+
+</body>
+
+</html>

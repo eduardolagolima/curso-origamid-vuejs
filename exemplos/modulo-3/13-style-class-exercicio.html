@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Curso Origamid Vue.js Completo</title>
+  <style>
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      font-family: monospace;
+      list-style: none;
+      padding: 0px;
+      margin: 0px;
+      cursor: pointer;
+    }
+
+    .column {
+      flex-direction: column;
+    }
+
+    li {
+      padding: 20px;
+      color: white;
+      border-radius: 4px;
+      margin: 10px;
+      flex: 1;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="app">
+    <button @click="column = !column">Alterar</button>
+
+    <ul :class="{column}" @click="mudarBackgroundColor">
+      <li :style="{backgroundColor}">Sobre</li>
+      <li :style="{backgroundColor}">Produtos</li>
+      <li :style="{backgroundColor}">Serviços</li>
+      <li :style="{backgroundColor}">Contato</li>
+    </ul>
+  </div>
+
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        column: true,
+        backgroundColor: "#84e"
+      },
+      methods: {
+        mudarBackgroundColor() {
+          this.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+        }
+      }
+    });
+  </script>
+
+  <!-- 
+    Crie um botão que troque a orientação da lista, ou seja,
+    ao invés de 4 colunas, uma única coluna com 4 linhas.
+
+    O botão será responsável por trocar para lista e também
+    responsável por reverter esse processo.
+    Utilize adição/remoção de classes para atingir este efeito.
+
+    A classe column já está criada, basta utilizar ela.
+
+    Crie um gerador de cores, toda vez que o usuário clicar
+    em cima da lista, os itens trocam de cor.
+
+    Gerador de cor:
+    const color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+  -->
+
+</body>
+
+</html>

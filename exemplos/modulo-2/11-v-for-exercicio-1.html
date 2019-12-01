@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Curso Origamid Vue.js Completo</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <button @click="obterEndereco">Obter endereço</button>
+    <p>{{objEndereco}}</p>
+    <ul>
+      <li v-for="(value, key) in objEndereco"><strong>{{key}}:</strong> {{value}}</li>
+    </ul>
+  </div>
+
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        objEndereco: {}
+      },
+      methods: {
+        obterEndereco() {
+          fetch("https://viacep.com.br/ws/04538133/json/")
+            .then(r => r.json())
+            .then(r => this.objEndereco = r)
+        }
+      }
+    });
+  </script>
+
+  <!--
+    Utilizando a api:
+    https://viacep.com.br/ws/04538133/json/
+    Mostre o cep, logradouro, complemento, bairro, localidade e uf do que for retornado.
+  -->
+</body>
+
+</html>

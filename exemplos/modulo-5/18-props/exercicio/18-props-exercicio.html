@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Curso Origamid Vue.js Completo</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <formulario></formulario>
+  </div>
+
+  <script>
+    const Resultado = {
+      name: "Resultado",
+      props: ["resultado"],
+      template: `
+        <div>
+          <pre v-if="resultado > 0">{{resultado}}</pre>
+        </div>
+      `
+    };
+
+    const Formulario = {
+      name: "Formulario",
+      components: {
+        Resultado
+      },
+      data() {
+        return {
+          moeda: "",
+          valor: 0
+        }
+      },
+      methods: {
+        buscar() {
+          fetch(`https://api.exchangeratesapi.io/latest?base=${this.moeda}`)
+            .then(r => r.json())
+            .then(r => this.valor = r.rates.BRL);
+        }
+      },
+      template: `
+        <div>
+          <input type="text" v-model="moeda" @keyup="moeda = moeda.toUpperCase()" maxlength="3">
+          <button @click="buscar">Buscar</button>
+          <resultado :resultado="valor"></resultado>
+        </div>
+      `
+    };
+
+    const vm = new Vue({
+      el: "#app",
+      components: {
+        Formulario
+      }
+    });
+  </script>
+
+  <!-- 
+    Crie um componente com um campo de input e um botão para enviar o valor.
+    Nesse campo de input será possível escrever o simbolo de empresas americanas
+
+    simbolos ex:
+    aapl -> Apple
+    goog -> Google
+    msft -> Microsoft
+    amzn -> Amazon
+    fb -> Facebook
+
+    Ao clicar no botão, faça um fetch com a API:
+    https://api.iextrading.com/1.0/stock/${SIMBOLO}/quote
+
+    O resultado do fetch deverá ser mostrado em um componente filho do formulário.
+    Envia as informações utilizando prop
+  
+    Mostre todas as informações do fetch utilizando um loop.
+  -->
+</body>
+
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Curso Origamid Vue.js Completo</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <div>
+      <label>width: </label>
+      <input type="text" v-model="style.width">
+      <hr>
+
+      <label>height: </label>
+      <input type="text" v-model="style.height">
+      <hr>
+
+      <label>fontSize: </label>
+      <input type="text" v-model="style.fontSize">
+      <hr>
+
+      <label>fontFamily: </label>
+      <input type="text" v-model="style.fontFamily">
+      <hr>
+
+      <label>textAlign: </label>
+      <input type="radio" value="left" id="left" v-model="style.textAlign">
+      <label for="left">left</label>
+      <input type="radio" value="center" id="center" v-model="style.textAlign">
+      <label for="center">center</label>
+      <input type="radio" value="right" id="right" v-model="style.textAlign">
+      <label for="right">right</label>
+      <hr>
+
+      <label>backgroundColor: </label>
+      <input type="color" v-model="style.backgroundColor">
+      <hr>
+
+      <label>color: </label>
+      <input type="color" v-model="style.color">
+      <hr>
+
+      <label>borderRadius: </label>
+      <input type="text" v-model="style.borderRadius">
+      <hr>
+    </div>
+    <hr>
+    <button :style="style">Botão</button>
+  </div>
+
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        style: {
+          width: "300px",
+          height: "40px",
+          fontSize: "15px",
+          fontFamily: "Verdana",
+          textAlign: "center",
+          backgroundColor: "#ff6347",
+          color: "#ffffff",
+          borderRadius: "5px",
+          border: 0
+        }
+      }
+    });
+  </script>
+
+  <!-- 
+    1 - Crie um criador de botões.
+
+    O usuário poderá definir:
+    width,
+    height,
+    font-size,
+    font-family,
+    text-align,
+    background,
+    color,
+    border-radius,
+
+    As escolhas serão feitas em campos de
+    formulário. Cada escolha deverá ser 
+    refletida em um elemento (o botão).
+  -->
+</body>
+
+</html>

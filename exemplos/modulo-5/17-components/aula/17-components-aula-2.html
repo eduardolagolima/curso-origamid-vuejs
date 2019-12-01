@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Curso Origamid Vue.js Completo</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <componente-local></componente-local>
+    <componente-global></componente-global>
+    <componente-global-estrutura></componente-global-estrutura>
+    <componente-local-com-global></componente-local-com-global>
+  </div>
+
+  <script>
+
+    // Sempre tem que ter um elemento principal envolvendo todo o HTML do template, nesse caso é a div abaixo envolvendo os parágrafos
+
+    const ComponenteLocal = {
+      name: "ComponenteLocal",
+      template: `
+        <div>
+          <p>Local 1</p>
+          <p>Local 2</p>
+        </div>
+      `
+    };
+
+    const ComponenteLocalComGlobal = {
+      name: "ComponenteLocalComGlobal",
+      template: `
+        <div>
+          <p>ComponenteLocalComGlobal - Início</p>
+          <componente-global></componente-global>
+          <p>ComponenteLocalComGlobal - Fim</p>
+        </div>
+      `
+    };
+
+    Vue.component("ComponenteGlobal", {
+      template: `
+        <div>
+          <p>Global 1</p>
+          <p>Global 2</p>
+        </div>
+      `
+    });
+
+    Vue.component("ComponenteGlobalEstrutura", {
+      data() {
+        return {
+          nome: "Eduardo",
+          sobrenome: "Lago"
+        }
+      },
+      computed: {
+        nomeCompleto() {
+          return this.nome + " " + this.sobrenome;
+        }
+      },
+      template: `
+        <div>
+          <p>{{nome}}</p>
+          <p>{{sobrenome}}</p>
+          <p>{{nomeCompleto}}</p>
+        </div>
+      `
+    });
+
+    const vm = new Vue({
+      el: "#app",
+      components: {
+        ComponenteLocal,
+        ComponenteLocalComGlobal
+      }
+    });
+  </script>
+
+</body>
+
+</html>

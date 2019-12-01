@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Curso Origamid Vue.js Completo</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <botao-contador></botao-contador>
+    <menu-principal></menu-principal>
+    <hr>
+    <menu-principal-com-botao-contador></menu-principal-com-botao-contador>
+  </div>
+
+  <script type="module">
+    import BotaoContador from "./BotaoContador.js";
+    import MenuPrincipal from "./MenuPrincipal.js";
+    import MenuPrincipalComBotaoContador from "./MenuPrincipalComBotaoContador.js";
+
+    Vue.component("BotaoContador", BotaoContador);
+    Vue.component("MenuPrincipal", MenuPrincipal);
+    Vue.component("MenuPrincipalComBotaoContador", MenuPrincipalComBotaoContador);
+
+    const vm = new Vue({
+      el: "#app"
+    });
+  </script>
+
+</body>
+
+</html>

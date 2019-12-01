@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Curso Origamid Vue.js Completo</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <componente-um></componente-um>
+    <componente-dois></componente-dois>
+  </div>
+
+  <script>
+    const EventBus = new Vue();
+
+    const ComponenteUm = {
+      name: "ComponenteUm",
+      data() {
+        return {
+          mensagem: "Mensagem do componente 1"
+        }
+      },
+      template: `
+        <div>
+          <button @click="emitirEvento">ComponenteUm</button>
+          <p>{{mensagem}}</p>
+        </div>
+      `,
+      methods: {
+        emitirEvento() {
+          EventBus.$emit("evento", this.mensagem)
+        }
+      }
+    };
+
+    const ComponenteDois = {
+      name: "ComponenteDois",
+      data() {
+        return {
+          mensagem: ""
+        }
+      },
+      template: `
+        <div>
+          <button>ComponenteDois</button>
+          <p>{{mensagem}}</p>
+        </div>
+      `,
+      created() {
+        EventBus.$on("evento", (mensagem) => {
+          this.mensagem = mensagem;
+        });
+      }
+    };
+
+    const vm = new Vue({
+      el: "#app",
+      data: {
+
+      },
+      components: {
+        ComponenteUm,
+        ComponenteDois
+      }
+    });
+  </script>
+
+</body>
+
+</html>

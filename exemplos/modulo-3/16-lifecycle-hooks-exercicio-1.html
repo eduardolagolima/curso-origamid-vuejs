@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <title>Curso Origamid Vue.js Completo</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <pre>{{github}}</pre>
+  </div>
+
+  <script>
+    const vm = new Vue({
+      el: "#app",
+      data: {
+        github: {}
+      },
+      methods: {
+        puxatGithub() {
+          fetch("https://api.github.com/users/eduardolago")
+            .then(r => r.json())
+            .then(r => this.github = r);
+        }
+      },
+      created() {
+        this.puxatGithub();
+      }
+    });
+  </script>
+  <!-- 
+    Utilize a api do github para
+    mostrar todos os seus dados na tela.
+    Faça o fetch das informações utilizando
+    um dos hooks do vue:
+
+    https://api.github.com/users/origamid (utilize o seu usuário)
+  -->
+</body>
+
+</html>
