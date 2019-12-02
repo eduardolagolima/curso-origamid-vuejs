@@ -13,7 +13,7 @@ import Aula from "./aula/Aula.vue";
 import Exercicio from "./exercicio/Exercicio.vue";
 
 export default {
-  name: 'Dynamic',
+  name: 'Transition',
   data() {
     return {
       componenteAtivo: ''

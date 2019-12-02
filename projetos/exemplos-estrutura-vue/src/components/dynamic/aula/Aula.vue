@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import AulaDescricao from './aula/AulaDescricao.vue';
-import AulaDownload from './aula/AulaDownload.vue';
+import AulaDescricao from './AulaDescricao.vue';
+import AulaDownload from './AulaDownload.vue';
 
 export default {
   name: 'Aula',

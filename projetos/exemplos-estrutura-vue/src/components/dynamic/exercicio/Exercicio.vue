@@ -12,9 +12,9 @@
 </template>
 
 <script>
-import Sobre from './exercicio/Sobre';
-import Servicos from './exercicio/Servicos';
-import Contato from './exercicio/Contato';
+import Sobre from './Sobre';
+import Servicos from './Servicos';
+import Contato from './Contato';
 
 export default {
   name: 'Exercicio',
