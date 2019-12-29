@@ -4,7 +4,7 @@
       <p>Carregando...</p>
     </div>
     <div v-else>
-      <div>{{jsonCep}}</div>
+      <pre>{{jsonCep}}</pre>
     </div>
   </div>
 </template>

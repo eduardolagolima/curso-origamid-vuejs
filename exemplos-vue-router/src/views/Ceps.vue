@@ -1,8 +1,9 @@
 <template>
   <div>
     <h1>Ceps</h1>
-    <router-link to="/ceps/99060020">Casa</router-link>
-    <router-link to="/ceps/99010090">Trabalho</router-link>
+    <router-link to="/ceps/99150000">Marau</router-link>
+    <router-link to="/ceps/99500000">Carazinho</router-link>
+    <router-link to="/ceps/99670000">Ronda Alta</router-link>
     <router-view></router-view>
   </div>
 </template>
