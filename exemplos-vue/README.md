@@ -1,4 +1,4 @@
-# exemplos-router
+# exemplos-vue
 
 ## Project setup
 ```

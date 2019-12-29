@@ -32,7 +32,7 @@
       },
       methods: {
         obterCursos() {
-          fetch("../arquivos-teste/cursos.json")
+          fetch("./cursos.json")
             .then(r => r.json())
             .then(r => this.cursos = r);
         }
