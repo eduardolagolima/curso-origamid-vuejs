@@ -4,7 +4,9 @@
     <router-link :to="{name: 'curso', params: { curso: 'html'}}">HTML</router-link>
     <router-link :to="{name: 'curso', params: { curso: 'javascript'}}">Javascript</router-link>
     <router-link :to="{name: 'curso', params: { curso: 'css'}}">CSS</router-link>
-    <router-view></router-view>
+    <transition mode="out-in">
+      <router-view :key="curso"></router-view>
+    </transition>
   </div>
 </template>
 
