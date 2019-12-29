@@ -20,6 +20,11 @@ export default new Router({
       path: '/cursos',
       component: Cursos,
       props: true,
+      // beforeEnter(to, from, next) {
+      //   console.log('to: ', to);
+      //   console.log('from: ', from);
+      //   next();
+      // },
       children: [
         {
           name: 'curso',

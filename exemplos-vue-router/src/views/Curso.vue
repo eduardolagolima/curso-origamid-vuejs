@@ -16,8 +16,21 @@
 export default {
   name: 'Cursos',
   props: ['curso'],
+  beforeRouteEnter(to, from, next) {
+    // Antes de entrar no router, não tem acesso ao this
+    next((vm) => {
+      // vm = this
+      console.log(vm);
+    });
+  },
   beforeRouteUpdate(to, from, next) {
+    console.log(this);
     next();
+    // Quando um router já ativo é atualizado
+  },
+  beforeRouteLeave(to, from, next) {
+    // Antes de sair do router
+    // next("/") é possível passar outros caminhos para o next()
   }
 };
 </script>
