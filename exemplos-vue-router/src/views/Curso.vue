@@ -22,11 +22,11 @@ export default {
     // Antes de entrar no router, não tem acesso ao this
     next(vm => {
       // vm = this
-      console.log(vm);
+      // console.log(vm);
     });
   },
   beforeRouteUpdate(to, from, next) {
-    console.log(this);
+    // console.log(this);
     next();
     // Quando um router já ativo é atualizado
   },

@@ -5,6 +5,8 @@ import Cursos from './views/Cursos.vue';
 import Curso from './views/Curso.vue';
 import CursoAulas from './views/CursoAulas.vue';
 import CursoDescricao from './views/CursoDescricao.vue';
+import Ceps from './views/Ceps.vue';
+import CepsDados from './views/CepsDados.vue';
 
 Vue.use(Router);
 
@@ -52,5 +54,16 @@ export default new Router({
     //   component: Cursos,
     //   props: true
     // }
+    {
+      path: '/ceps',
+      component: Ceps,
+      children: [
+        {
+          path: ':cep',
+          component: CepsDados,
+          props: true
+        }
+      ]
+    }
   ]
 });
