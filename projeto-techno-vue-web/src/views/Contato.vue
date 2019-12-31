@@ -4,7 +4,7 @@
       <Loading />
     </div>
     <div v-else>
-      <h1>Home</h1>
+      <h1>Contato</h1>
       <pre>{{data}}</pre>
     </div>
   </div>
@@ -14,7 +14,7 @@
 import fetchData from "@/mixins/fetchData.js";
 
 export default {
-  name: "Home",
+  name: "Contato",
   mixins: [fetchData]
 };
 </script>
