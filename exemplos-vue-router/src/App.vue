@@ -6,9 +6,10 @@
       <router-link to="/cursos">Cursos</router-link>
       <router-link to="/ceps">Ceps</router-link>
     </nav>
-    <transition mode="out-in">
-      <router-view></router-view>
-    </transition>
+    <transition-group mode="out-in">
+      <router-view :key="'default'"></router-view>
+      <router-view :key="'sidebar'" name="sidebar"></router-view>
+    </transition-group>
   </div>
 </template>
 
@@ -30,6 +31,7 @@ export default {
 
 nav {
   padding: 20px 0;
+  /* margin-top: 2000px; */
 }
 
 a {

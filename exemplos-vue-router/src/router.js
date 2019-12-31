@@ -7,6 +7,7 @@ import CursoAulas from './views/CursoAulas.vue';
 import CursoDescricao from './views/CursoDescricao.vue';
 import Ceps from './views/Ceps.vue';
 import CepsDados from './views/CepsDados.vue';
+import NotFound from './views/NotFound.vue';
 
 Vue.use(Router);
 
@@ -16,7 +17,14 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: Home
+      components: {
+        default: Home,
+        sidebar: Ceps
+      }
+    },
+    {
+      path: '/home',
+      redirect: '/'
     },
     {
       path: '/cursos',
@@ -56,7 +64,10 @@ export default new Router({
     // }
     {
       path: '/ceps',
-      component: Ceps,
+      components: {
+        default: Ceps,
+        sidebar: Home
+      },
       children: [
         {
           path: ':cep',
@@ -64,6 +75,17 @@ export default new Router({
           props: true
         }
       ]
+    },
+    {
+      path: '*',
+      component: NotFound
     }
-  ]
+  ],
+  scrollBehavior(to, from, savedPosition) {
+    return {
+      x: 0,
+      y: 0,
+    }
+    // return window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 });
