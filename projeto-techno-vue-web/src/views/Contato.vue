@@ -3,10 +3,26 @@
     <div v-if="loading">
       <Loading />
     </div>
-    <div v-else>
-      <h1>Contato</h1>
-      <pre>{{data}}</pre>
-    </div>
+    <transition>
+      <div v-if="data">
+        <h1>{{data.titulo}}</h1>
+        <p>{{data.descricao}}</p>
+        <ul>
+          <li>
+            <strong>Telefone:</strong>
+            {{data.contato.telefone}}
+          </li>
+          <li>
+            <strong>E-mail:</strong>
+            {{data.contato.email}}
+          </li>
+          <li>
+            <strong>Endereço:</strong>
+            {{data.contato.endereco}}
+          </li>
+        </ul>
+      </div>
+    </transition>
   </div>
 </template>
 

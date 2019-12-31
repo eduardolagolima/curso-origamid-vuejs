@@ -3,10 +3,12 @@
     <div v-if="loading">
       <Loading />
     </div>
-    <div v-else>
-      <h1>Cursos</h1>
-      <pre>{{data}}</pre>
-    </div>
+    <transition>
+      <div v-if=data>
+        <h1>Cursos</h1>
+        <pre>{{data}}</pre>
+      </div>
+    </transition>
   </div>
 </template>
 
