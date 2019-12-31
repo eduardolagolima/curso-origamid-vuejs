@@ -21,7 +21,7 @@ export default {
   methods: {
     async obterJsonCep(cep) {
       this.loading = true;
-      this.cep = null;
+      this.jsonCep = null;
 
       // Feedback
       await new Promise(resolve => setTimeout(resolve, 1000));
