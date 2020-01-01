@@ -10,7 +10,7 @@ export default {
       this.data = null;
       this.loading = true;
 
-      fetch(`http://0.0.0.0:4000/${this.$route.name}`)
+      fetch(`http://0.0.0.0:4000/${route}`)
         .then(r => r.json())
         .then(r => {
           setTimeout(() => {
@@ -21,6 +21,6 @@ export default {
     }
   },
   created() {
-    this.fetchData();
+    this.fetchData(this.$route.name);
   }
 };

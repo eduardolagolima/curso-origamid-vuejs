@@ -2,7 +2,7 @@
   <header>
     <nav>
       <div class="logo">
-        <router-link to="/">Techno</router-link>
+        <router-link to="/home">Techno</router-link>
       </div>
       <ul>
         <li>
@@ -58,7 +58,7 @@ li a {
   margin-left: 10px;
 }
 
-a.router-link-exact-active {
+a.router-link-active {
   color: #4b8;
 }
 </style>

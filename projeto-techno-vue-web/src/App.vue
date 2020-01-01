@@ -38,10 +38,6 @@ img {
   max-width: 100%;
 }
 
-a.router-link-exact-active {
-  color: #4b8;
-}
-
 .container {
   max-width: 800px;
   margin: 0 auto;
