@@ -5,7 +5,15 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    user: "Eduardo Lago Lima",
-    quantidadeAulasFeitas: 15
+    usuario: "Eduardo",
+    quantidadeAulasCompletas: 15
+  },
+  mutations: {
+    MUDAR_USUARIO(state, payload) {
+      state.usuario = payload.novoUsuario;
+    },
+    COMPLETAR_AULA(state) {
+      state.quantidadeAulasCompletas++;
+    }
   }
 });

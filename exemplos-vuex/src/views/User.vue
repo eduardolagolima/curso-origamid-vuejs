@@ -1,34 +1,35 @@
 <template>
   <div>
-    <!-- Maneira 1 -->
-    <!-- <h1>User: {{$store.state.user}}</h1> -->
-
-    <!-- Maneira 2 -->
-    <!-- <h1>User: {{user}}</h1> -->
-
-    <!-- Maneira 3 -->
-    <h1>User: {{user}} / Idade: {{idadeExtenso}} / Quantidade de aulas feitas: {{quantidadeAulasFeitas}}</h1>
+    <input type="text" v-model="novoUsuario">
+    <button @click="mudarUsuario">Mudar usuário</button>
+    <span> | </span>
+    <button @click="COMPLETAR_AULA">Completar aula</button>
+    <h1>User: {{usuario}} / Idade: {{idadeExtenso}} / Quantidade de aulas feitas: {{quantidadeAulasCompletas}}</h1>
   </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapMutations } from "vuex";
 
 export default {
   data() {
     return {
-      idade: 24
+      idade: 24,
+      novoUsuario: null
     }
   },
-  // <!-- Maneira 2 -->
-  // computed: {
-  //   user() {
-  //     return this.$store.state.user;
-  //   }
-  // }
-  // Maneira 3
+  methods: {
+    // o spread operator serve para conseguir usar mais methods após o uso da função mapMutations
+    ...mapMutations(["MUDAR_USUARIO", "COMPLETAR_AULA"]),
+    mudarUsuario() {
+      this.MUDAR_USUARIO({
+        novoUsuario: this.novoUsuario
+      });
+    }
+  },
   computed: {
-    ...mapState(["user", "quantidadeAulasFeitas"]),
+    // o spread operator serve para conseguir usar mais computed properties após o uso da função mapState
+    ...mapState(["usuario", "quantidadeAulasCompletas"]),
     idadeExtenso() {
       return this.idade + ' anos'
     }
