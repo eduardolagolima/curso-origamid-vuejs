@@ -29,10 +29,19 @@ export default {
     Curso
   },
   computed: {
-    ...mapState(["cep", "livros"]),
+    ...mapState("cep", [
+      "cep", 
+    ]),
+    ...mapState([
+      "livros"
+    ]),
     ...mapGetters(["livrosLidos"])
   },
-  methods: mapActions(["fetchCep"]),
+  methods: {
+    ...mapActions("cep", [
+      "fetchCep"
+    ])
+  },
   created() {
     this.fetchCep()
   }
