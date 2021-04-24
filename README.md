@@ -11,8 +11,7 @@ https://www.origamid.com/slide/vue-js-completo/
 **Vue.js**
 
 ```bash
-# Vai rodar na porta 3000
-npm run serve
+yarn serve
 ```
 
 **Api - https://github.com/typicode/json-server**
