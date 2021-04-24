@@ -1,4 +1,4 @@
-# projeto-techno-vue-web
+# web
 
 ## Project setup
 ```

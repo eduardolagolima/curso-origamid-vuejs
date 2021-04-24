@@ -1,4 +1,4 @@
-# exemplos-vuex-exercicio-mutations
+# vuex-exercicio-mutations
 
 ## Project setup
 ```

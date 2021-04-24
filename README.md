@@ -14,58 +14,57 @@ https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer
 ### Pacote json-server
 https://github.com/typicode/json-server
 ```bash
-$ yarn add global json-server
+$ yarn global add json-server
 ```
 
 # Como rodar cada exemplo/projeto
 
-### exemplos-html
+### exemplos/html
 ```bash
 # Rodar utilizando a extensão Live Server do VSCode
 ```
 
-### exemplos-vue
+### exemplos/vue
 ```bash
-$ cd exemplos-vue
+$ cd exemplos/vue
 $ yarn
 $ yarn serve
 ```
 
-### exemplos-vue-router
+### exemplos/vue-router
 ```bash
-$ cd exemplos-vue-router
+$ cd exemplos/vue-router
 $ yarn
 $ yarn serve
 ```
 
-### exemplos-vuex
+### exemplos/vuex
 ```bash
-$ cd exemplos-vuex
+$ cd exemplos/vuex
 $ yarn
 $ yarn serve
 ```
 
-### exemplos-vuex-exercicio-mutations
+### exemplos/vuex-exercicio-mutations
 ```bash
-$ cd exemplos-vuex-exercicio-mutations
+$ cd exemplos/vuex-exercicio-mutations
 $ yarn
 $ yarn serve
 ```
 
-### projeto-techno-html
+### projetos/techno-html
 ```bash
 # Rodar utilizando a extensão Live Server do VSCode
 ```
 
-### projeto-techno-vue-api
+### projetos/techno-vue
 ```bash
-$ cd projeto-techno-vue-api
+# api
+$ cd projetos/techno-vue/api
 $ json-server --watch api.json -H 0.0.0.0 -p 4000
-```
 
-### projeto-techno-vue-web
-```bash
-$ cd projeto-techno-vue-web
+# web
+$ cd projetos/techno-vue/web
 $ yarn
 $ yarn serve
 ```

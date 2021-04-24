@@ -1,4 +1,4 @@
-# exemplos-vuex
+# vue
 
 ## Project setup
 ```
