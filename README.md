@@ -68,3 +68,15 @@ $ cd projetos/techno-vue/web
 $ yarn
 $ yarn serve
 ```
+
+### projetos/ranek-vue
+```bash
+# api
+$ cd projetos/ranek-vue/api
+$ json-server --watch ranek.json -H 0.0.0.0 -p 4000
+
+# web
+$ cd projetos/ranek-vue/web
+$ yarn
+$ yarn serve
+```
