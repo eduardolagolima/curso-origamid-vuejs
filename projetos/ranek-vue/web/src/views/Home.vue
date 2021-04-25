@@ -1,20 +1,20 @@
 <template>
   <section>
     <h1>👍 Compre ou Venda 👎</h1>
-    <ProductsSearch />
-    <ProductsListing />
+    <ProdutosBusca />
+    <ProdutosListagem />
   </section>
 </template>
 
 <script>
-import ProductsSearch from '../components/Products/ProductsSearch.vue';
-import ProductsListing from '../components/Products/ProductsListing.vue';
+import ProdutosBusca from '../components/Produtos/ProdutosBusca.vue';
+import ProdutosListagem from '../components/Produtos/ProdutosListagem.vue';
 
 export default {
   name: 'Home',
   components: {
-    ProductsSearch,
-    ProductsListing,
+    ProdutosBusca,
+    ProdutosListagem,
   },
 };
 </script>
