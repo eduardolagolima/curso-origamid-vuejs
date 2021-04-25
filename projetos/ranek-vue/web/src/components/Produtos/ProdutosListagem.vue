@@ -22,13 +22,26 @@
 
 <script>
 import api from '../../services/api';
+import serialize from '../../helpers/serialize';
 
 export default {
   name: 'ProdutosListagem',
   data() {
     return {
       produtos: [],
+      produtosPorPagina: 9,
     };
+  },
+  computed: {
+    query() {
+      const query = { _limit: this.produtosPorPagina, ...this.$route.query };
+      return serialize(query);
+    },
+  },
+  watch: {
+    query() {
+      this.getProdutos();
+    },
   },
   created() {
     this.getProdutos();
@@ -36,7 +49,7 @@ export default {
   methods: {
     async getProdutos() {
       try {
-        this.produtos = await api.get('/produto');
+        this.produtos = await api.get(`/produto?${this.query}`);
       } catch (error) {
         console.log(error);
       }
