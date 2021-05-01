@@ -1,17 +1,24 @@
 <template>
-  <ul v-if="paginasTotal > 1">
+  <ul v-if="totalPaginas > 1">
     <li
-      v-for="pagina in paginasTotal"
-      :key="pagina"
+      v-for="({ label, pagina }, index) in paginas"
+      :key="index"
     >
-      <router-link :to="{ query: { ...$route.query, _page: pagina } }">
-        {{ pagina }}
+      <router-link
+        :class="{
+          'pagina-ativa': pagina === paginaAtual && !['<<', '<', '>', '>>'].includes(label)
+        }"
+        :to="query(pagina)"
+      >
+        {{ label }}
       </router-link>
     </li>
   </ul>
 </template>
 
 <script>
+import { createArrayRangeByNumber } from '../../helpers';
+
 export default {
   name: 'ProdutosPaginacao',
   props: {
@@ -19,18 +26,51 @@ export default {
       type: Number,
       default: 1,
     },
-    produtosTotal: {
+    totalProdutos: {
       type: Number,
       default: 1,
     },
   },
+  data() {
+    return {
+      paginasRange: 9,
+    };
+  },
   computed: {
-    paginasTotal() {
+    paginaAtual() {
+      const { _page: paginaAtual = 1 } = this.$route.query;
+      return +paginaAtual;
+    },
+    paginas() {
+      const { paginasRange, paginaAtual, totalPaginas } = this;
+
+      const paginas = createArrayRangeByNumber(paginasRange, paginaAtual, 0, totalPaginas)
+        .map((pagina) => ({ label: pagina, pagina }));
+
+      return [
+        { label: '<<', pagina: 1 },
+        { label: '<', pagina: Math.max(1, paginaAtual - 1) },
+        ...paginas,
+        { label: '>', pagina: Math.min(totalPaginas, paginaAtual + 1) },
+        { label: '>>', pagina: totalPaginas },
+      ];
+    },
+    totalPaginas() {
       if (this.produtosPorPagina === 0) {
         return 0;
       }
 
-      return Math.ceil(this.produtosTotal / this.produtosPorPagina);
+      return Math.ceil(this.totalProdutos / this.produtosPorPagina);
+    },
+  },
+  methods: {
+    query(pagina) {
+      return {
+        query: {
+          ...this.$route.query,
+          _page: pagina,
+        },
+      };
     },
   },
 };
@@ -46,13 +86,21 @@ li {
 }
 
 li a {
-  padding: 2px 8px;
+  display: block;
+  text-align: center;
+  width: 2rem;
+  height: 2rem;
+  line-height: 2rem;
   border-radius: 2px;
   margin: 4px;
 }
 
-li a.router-link-exact-active,
 li a:hover {
+  background: #87f;
+  color: #fff;
+}
+
+.pagina-ativa {
   background: #87f;
   color: #fff;
 }
