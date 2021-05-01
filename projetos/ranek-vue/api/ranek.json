@@ -15,7 +15,7 @@
   "produto": [
     {
       "id": "notebook",
-      "nome": "Notebook",
+      "nome": "Notebook 1",
       "usuario_id": "andre@origamid.com",
       "preco": "4999",
       "vendido": "false",
@@ -24,7 +24,7 @@
     },
     {
       "id": "smartphone",
-      "nome": "Smartphone",
+      "nome": "Smartphone 1",
       "usuario_id": "andre@origamid.com",
       "preco": "1999",
       "vendido": "false",
@@ -33,7 +33,88 @@
     },
     {
       "id": "tablet",
-      "nome": "Tablet",
+      "nome": "Tablet 1",
+      "usuario_id": "andre@origamid.com",
+      "preco": "1399",
+      "vendido": "false",
+      "descricao": "Esse é um novo tablet.",
+      "fotos": []
+    },
+    {
+      "id": "notebook",
+      "nome": "Notebook 2",
+      "usuario_id": "andre@origamid.com",
+      "preco": "4999",
+      "vendido": "false",
+      "descricao": "Esse é um novo notebook.",
+      "fotos": []
+    },
+    {
+      "id": "smartphone",
+      "nome": "Smartphone 2",
+      "usuario_id": "andre@origamid.com",
+      "preco": "1999",
+      "vendido": "false",
+      "descricao": "Esse é um novo smartphone.",
+      "fotos": []
+    },
+    {
+      "id": "tablet",
+      "nome": "Tablet 2",
+      "usuario_id": "andre@origamid.com",
+      "preco": "1399",
+      "vendido": "false",
+      "descricao": "Esse é um novo tablet.",
+      "fotos": []
+    },
+    {
+      "id": "notebook",
+      "nome": "Notebook 3",
+      "usuario_id": "andre@origamid.com",
+      "preco": "4999",
+      "vendido": "false",
+      "descricao": "Esse é um novo notebook.",
+      "fotos": []
+    },
+    {
+      "id": "smartphone",
+      "nome": "Smartphone 3",
+      "usuario_id": "andre@origamid.com",
+      "preco": "1999",
+      "vendido": "false",
+      "descricao": "Esse é um novo smartphone.",
+      "fotos": []
+    },
+    {
+      "id": "tablet",
+      "nome": "Tablet 3",
+      "usuario_id": "andre@origamid.com",
+      "preco": "1399",
+      "vendido": "false",
+      "descricao": "Esse é um novo tablet.",
+      "fotos": []
+    },
+    {
+      "id": "notebook",
+      "nome": "Notebook 4",
+      "usuario_id": "andre@origamid.com",
+      "preco": "4999",
+      "vendido": "false",
+      "descricao": "Esse é um novo notebook.",
+      "fotos": []
+    },
+    {
+      "id": "smartphone",
+      "nome": "Smartphone 4",
+      "usuario_id": "andre@origamid.com",
+      "preco": "1999",
+      "vendido": "false",
+      "descricao": "Esse é um novo smartphone.",
+      "fotos": []
+    },
+    {
+      "id": "tablet",
+      "nome": "Tablet 4",
       "usuario_id": "andre@origamid.com",
       "preco": "1399",
       "vendido": "false",
