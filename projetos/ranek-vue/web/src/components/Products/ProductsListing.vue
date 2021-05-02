@@ -1,39 +1,49 @@
 <template>
   <section class="products-container">
-    <div
-      v-if="products && products.length > 0"
-      class="products"
-    >
+    <transition mode="out-in">
       <div
-        v-for="({ images, price, name, description }, index) in products"
-        :key="index"
-        class="product"
+        v-if="products && products.length > 0"
+        key="products"
+        class="products"
       >
-        <router-link to="/">
-          <img
-            v-if="images.length"
-            :src="images[0].src"
-            :alt="images[0].title"
-          >
-          <p class="price">
-            {{ price }}
-          </p>
-          <h2 class="title">
-            {{ name }}
-          </h2>
-          <p>{{ description }}</p>
-        </router-link>
+        <div
+          v-for="({ images, price, name, description }, index) in products"
+          :key="index"
+          class="product"
+        >
+          <router-link to="/">
+            <img
+              v-if="images.length"
+              :src="images[0].src"
+              :alt="images[0].title"
+            >
+            <p class="price">
+              {{ price }}
+            </p>
+            <h2 class="title">
+              {{ name }}
+            </h2>
+            <p>{{ description }}</p>
+          </router-link>
+        </div>
+        <ProductsPagination
+          :products-per-page="productsPerPage"
+          :total-products="totalProducts"
+        />
       </div>
-      <ProductsPagination
-        :products-per-page="productsPerPage"
-        :total-products="totalProducts"
+      <div
+        v-else-if="products && products.length === 0"
+        key="no-results"
+      >
+        <p class="no-results">
+          Nenhum resultado encontrado para "{{ this.$route.query.q }}"
+        </p>
+      </div>
+      <Loading
+        v-else
+        key="loading"
       />
-    </div>
-    <div v-else-if="products && products.length === 0">
-      <p class="no-results">
-        Nenhum resultado encontrado para "{{ this.$route.query.q }}"
-      </p>
-    </div>
+    </transition>
   </section>
 </template>
 
@@ -50,8 +60,8 @@ export default {
   },
   data() {
     return {
-      products: [],
-      productsPerPage: 3,
+      products: null,
+      productsPerPage: 9,
       totalProducts: 0,
     };
   },
@@ -74,6 +84,11 @@ export default {
   methods: {
     async getProducts() {
       try {
+        this.products = null;
+
+        // apenas para testes
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+
         const response = await api.get(`/products?${this.query}`);
         this.products = response.data;
         this.totalProducts = +response.headers['x-total-count'];
