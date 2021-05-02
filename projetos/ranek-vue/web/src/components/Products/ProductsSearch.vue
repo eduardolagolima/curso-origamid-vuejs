@@ -1,33 +1,32 @@
 <template>
   <form>
     <input
-      id="busca"
-      v-model="busca"
-      name="busca"
+      id="search"
+      v-model="search"
       type="text"
       placeholder="Buscar..."
     >
     <input
-      id="lupa"
+      id="search-icon"
       type="submit"
       value=""
-      @click.prevent="buscarProdutos"
+      @click.prevent="getProducts"
     >
   </form>
 </template>
 
 <script>
 export default {
-  name: 'ProdutosBusca',
+  name: 'ProductsSearch',
   data() {
     return {
-      busca: '',
+      search: '',
     };
   },
   methods: {
-    buscarProdutos() {
-      if (this.busca !== this.$route.query.q) {
-        this.$router.push({ query: { q: this.busca } });
+    getProducts() {
+      if (this.search !== this.$route.query.q) {
+        this.$router.push({ query: { q: this.search } });
       }
     },
   },
@@ -41,18 +40,18 @@ form {
   position: relative;
 }
 
-#busca {
+#search {
   width: 100%;
   padding: 20px;
   border: none;
 }
 
-#busca:focus,
-#busca:hover {
+#search:focus,
+#search:hover {
   transform: scale(1.1);
 }
 
-#lupa {
+#search-icon {
   width: 62px;
   height: 62px;
   background: url("../../assets/search.svg") no-repeat center center;

@@ -3,7 +3,7 @@
     <nav>
       <router-link
         to="/"
-        class="logo"
+        class="brand"
       >
         <img
           src="../assets/ranek.svg"
@@ -35,11 +35,11 @@ nav {
   box-shadow: 0 2px 4px rgba(30, 60, 90, 0.1);
 }
 
-.logo {
+.brand {
   padding: 10px 0;
 }
 
-.logo img {
+.brand img {
   width: 90px;
 }
 </style>
