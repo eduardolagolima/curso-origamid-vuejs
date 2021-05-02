@@ -23,6 +23,11 @@ export default {
       search: '',
     };
   },
+  created() {
+    if (this.$route.query.q) {
+      this.search = this.$route.query.q;
+    }
+  },
   methods: {
     getProducts() {
       if (this.search !== this.$route.query.q) {
