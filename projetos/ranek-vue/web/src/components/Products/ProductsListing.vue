@@ -7,18 +7,23 @@
         class="products"
       >
         <div
-          v-for="({ images, price, name, description }, index) in products"
+          v-for="({ id, images, price, name, description }, index) in products"
           :key="index"
           class="product"
         >
-          <router-link to="/">
+          <router-link
+            :to="{
+              name: 'product',
+              params: { id }
+            }"
+          >
             <img
               v-if="images.length"
               :src="images[0].src"
               :alt="images[0].title"
             >
             <p class="price">
-              {{ price }}
+              {{ price | formatValue }}
             </p>
             <h2 class="title">
               {{ name }}
@@ -86,10 +91,8 @@ export default {
       try {
         this.products = null;
 
-        // apenas para testes
-        await new Promise((resolve) => setTimeout(resolve, 1500));
-
         const response = await api.get(`/products?${this.query}`);
+
         this.products = response.data;
         this.totalProducts = +response.headers['x-total-count'];
       } catch (error) {

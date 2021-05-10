@@ -4,10 +4,12 @@ import router from './router';
 import store from './store';
 
 import Loading from './components/Loading.vue';
+import formatValue from './filters';
 
 Vue.config.productionTip = false;
 
 Vue.component('Loading', Loading);
+Vue.filter('formatValue', formatValue);
 
 new Vue({
   router,
