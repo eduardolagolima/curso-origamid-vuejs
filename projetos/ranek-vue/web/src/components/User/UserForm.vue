@@ -70,7 +70,9 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name: 'UserForm',
+};
 </script>
 
 <style scoped>
