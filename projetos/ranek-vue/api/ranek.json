@@ -5,7 +5,7 @@
       "name": "André Rafael",
       "email": "andre@origamid.com",
       "password": "123",
-      "zip_code": 12345678,
+      "cep": 12345678,
       "state": "RJ",
       "city": "Rio de Janeiro",
       "neighborhood": "Bairro X",

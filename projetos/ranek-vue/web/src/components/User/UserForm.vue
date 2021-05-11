@@ -21,17 +21,19 @@
       name="password"
       type="password"
     >
-    <label for="zip_code">Cep</label>
+    <label for="cep">Cep</label>
     <input
-      id="zip_code"
-      v-model="zip_code"
-      name="zip_code"
+      id="cep"
+      v-model="cep"
+      name="cep"
       type="text"
+      @keyup="searchCep"
     >
     <label for="state">Estado</label>
     <input
       id="state"
       v-model="state"
+      disabled
       name="state"
       type="text"
     >
@@ -39,6 +41,7 @@
     <input
       id="city"
       v-model="city"
+      disabled
       name="city"
       type="text"
     >
@@ -46,6 +49,7 @@
     <input
       id="neighborhood"
       v-model="neighborhood"
+      disabled
       name="neighborhood"
       type="text"
     >
@@ -53,12 +57,14 @@
     <input
       id="street"
       v-model="street"
+      disabled
       name="street"
       type="text"
     >
     <label for="number">Numero</label>
     <input
       id="number"
+      ref="number"
       v-model="number"
       name="number"
       type="text"
@@ -71,6 +77,7 @@
 
 <script>
 import { mapFields } from '../../helpers';
+import getCep from '../../services/cep';
 
 export default {
   name: 'UserForm',
@@ -80,7 +87,7 @@ export default {
         'name',
         'email',
         'password',
-        'zip_code',
+        'cep',
         'state',
         'city',
         'neighborhood',
@@ -90,6 +97,32 @@ export default {
       object: 'user',
       mutation: 'UPDATE_USER',
     }),
+  },
+  methods: {
+    async searchCep() {
+      try {
+        const cep = this.cep.replace(/\D/g, '');
+
+        if (cep.length === 8) {
+          const response = await getCep(cep);
+          const {
+            uf: state,
+            localidade: city,
+            bairro: neighborhood,
+            logradouro: street,
+          } = response.data;
+
+          this.state = state;
+          this.city = city;
+          this.neighborhood = neighborhood;
+          this.street = street;
+
+          this.$refs.number.focus();
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    },
   },
 };
 </script>
