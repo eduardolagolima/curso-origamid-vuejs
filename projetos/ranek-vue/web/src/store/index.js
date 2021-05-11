@@ -26,7 +26,7 @@ export default new Vuex.Store({
       state.loggedIn = payload;
     },
     UPDATE_USER(state, payload) {
-      state.user = payload;
+      state.user = { ...state.user, ...payload };
     },
   },
   actions: {

@@ -70,8 +70,27 @@
 </template>
 
 <script>
+import { mapFields } from '../../helpers';
+
 export default {
   name: 'UserForm',
+  computed: {
+    ...mapFields({
+      fields: [
+        'name',
+        'email',
+        'password',
+        'zip_code',
+        'state',
+        'city',
+        'neighborhood',
+        'street',
+        'number',
+      ],
+      object: 'user',
+      mutation: 'UPDATE_USER',
+    }),
+  },
 };
 </script>
 
