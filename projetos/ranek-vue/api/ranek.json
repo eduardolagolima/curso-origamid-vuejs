@@ -2,14 +2,15 @@
   "users": [
     {
       "id": "andre@origamid.com",
-      "email": "andre@origamid.com",
       "name": "André Rafael",
+      "email": "andre@origamid.com",
       "password": "123",
-      "street": "Rua Ali Perto",
       "zip_code": 12345678,
-      "number": 25,
       "state": "RJ",
-      "city": "Rio de Janeiro"
+      "city": "Rio de Janeiro",
+      "neighborhood": "Bairro X",
+      "street": "Rua Ali Perto",
+      "number": 25
     }
   ],
   "products": [

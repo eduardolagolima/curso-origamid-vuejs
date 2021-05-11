@@ -1,12 +1,54 @@
 <template>
-  <p>Register</p>
+  <section>
+    <h2>Crie a Sua Conta</h2>
+    <transition mode="out-in">
+      <button
+        v-if="!showForm"
+        class="btn"
+        @click="showForm = true"
+      >
+        Criar Conta
+      </button>
+      <UserForm v-else>
+        <button class="btn btn-form">
+          Criar Usuário
+        </button>
+      </UserForm>
+    </transition>
+  </section>
 </template>
 
 <script>
+import UserForm from './User/UserForm.vue';
+
 export default {
   name: 'Register',
+  components: {
+    UserForm,
+  },
+  data() {
+    return {
+      showForm: false,
+    };
+  },
 };
 </script>
 
-<style>
+<style scoped>
+h2 {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+
+.btn {
+  width: 100%;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-form {
+  max-width: 100%;
+}
 </style>
