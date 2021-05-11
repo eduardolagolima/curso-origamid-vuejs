@@ -11,6 +11,14 @@
         >
       </router-link>
       <router-link
+        v-if="$store.state.loggedIn"
+        class="btn"
+        to="/user"
+      >
+        {{ name }}
+      </router-link>
+      <router-link
+        v-else
         class="btn"
         to="/login"
       >
@@ -23,6 +31,11 @@
 <script>
 export default {
   name: 'Header',
+  computed: {
+    name() {
+      return this.$store.state.user.name.split(' ')[0];
+    },
+  },
 };
 </script>
 

@@ -50,7 +50,10 @@ export default {
     };
   },
   methods: {
-    login() {},
+    login() {
+      this.$store.dispatch('getUser', this.email);
+      this.$router.push({ name: 'user' });
+    },
   },
 };
 </script>
