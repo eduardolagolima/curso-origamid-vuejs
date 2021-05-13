@@ -50,9 +50,13 @@ export default {
     };
   },
   methods: {
-    login() {
-      this.$store.dispatch('getUser', this.email);
-      this.$router.push({ name: 'user' });
+    async login() {
+      try {
+        await this.$store.dispatch('getUser', this.email);
+        this.$router.push({ name: 'user' });
+      } catch (error) {
+        console.log(error);
+      }
     },
   },
 };

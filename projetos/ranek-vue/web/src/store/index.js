@@ -26,7 +26,7 @@ export default new Vuex.Store({
       state.loggedIn = payload;
     },
     UPDATE_USER(state, payload) {
-      state.user = { ...state.user, ...payload };
+      state.user = Object.assign(state.user, payload);
     },
   },
   actions: {
@@ -36,6 +36,14 @@ export default new Vuex.Store({
 
         context.commit('UPDATE_LOGGED_IN', true);
         context.commit('UPDATE_USER', response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async createUser(context, payload) {
+      try {
+        context.commit('UPDATE_USER', { id: payload.email });
+        await api.post('/users', payload);
       } catch (error) {
         console.log(error);
       }
