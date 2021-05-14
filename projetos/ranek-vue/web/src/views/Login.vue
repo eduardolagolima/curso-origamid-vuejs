@@ -52,8 +52,8 @@ export default {
   methods: {
     async login() {
       try {
-        await this.$store.dispatch('getUser', this.email);
-        this.$router.push({ name: 'user' });
+        await this.$store.dispatch('login', this.email);
+        this.$router.push({ name: 'user-products' });
       } catch (error) {
         console.log(error);
       }

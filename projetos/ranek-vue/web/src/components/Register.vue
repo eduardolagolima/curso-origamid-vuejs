@@ -37,9 +37,9 @@ export default {
   methods: {
     async register() {
       try {
-        await this.$store.dispatch('createUser', this.$store.state.user);
-        await this.$store.dispatch('getUser', this.$store.state.user.email);
-        this.$router.push({ name: 'user' });
+        await this.$store.dispatch('register', this.$store.state.user);
+        await this.$store.dispatch('login', this.$store.state.user.email);
+        this.$router.push({ name: 'user-products' });
       } catch (error) {
         console.log(error);
       }

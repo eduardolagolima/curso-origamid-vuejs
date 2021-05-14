@@ -5,6 +5,10 @@ import Home from '../views/Home.vue';
 import Login from '../views/Login.vue';
 import Product from '../views/Product.vue';
 import User from '../views/User/User.vue';
+import UserProducts from '../views/User/UserProducts.vue';
+import UserPurchases from '../views/User/UserPurchases.vue';
+import UserSales from '../views/User/UserSales.vue';
+import UserEditProfile from '../views/User/UserEditProfile.vue';
 
 Vue.use(VueRouter);
 
@@ -27,8 +31,29 @@ const routes = [
   },
   {
     path: '/user',
-    name: 'user',
     component: User,
+    children: [
+      {
+        path: 'products',
+        name: 'user-products',
+        component: UserProducts,
+      },
+      {
+        path: 'purchases',
+        name: 'user-purchases',
+        component: UserPurchases,
+      },
+      {
+        path: 'sales',
+        name: 'user-sales',
+        component: UserSales,
+      },
+      {
+        path: 'edit-profile',
+        name: 'user-edit-profile',
+        component: UserEditProfile,
+      },
+    ],
   },
 ];
 

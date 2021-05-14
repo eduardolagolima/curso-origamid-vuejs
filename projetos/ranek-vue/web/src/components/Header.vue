@@ -2,7 +2,7 @@
   <header>
     <nav>
       <router-link
-        to="/"
+        :to="{ name: 'home' }"
         class="brand"
       >
         <img
@@ -13,14 +13,14 @@
       <router-link
         v-if="$store.state.loggedIn"
         class="btn"
-        to="/user"
+        :to="{ name: 'user-products' }"
       >
         {{ name }}
       </router-link>
       <router-link
         v-else
         class="btn"
-        to="/login"
+        :to="{ name: 'login' }"
       >
         Vender / Login
       </router-link>
