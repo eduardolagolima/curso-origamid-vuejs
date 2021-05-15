@@ -73,6 +73,7 @@ $ yarn serve
 ```bash
 # api
 $ cd projetos/ranek-vue/api
+$ cp example.json ranek.json
 $ json-server --watch ranek.json -H 0.0.0.0 -p 4000
 
 # web
