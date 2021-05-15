@@ -19,6 +19,7 @@ const getInitialState = () => ({
     street: '',
     number: null,
   },
+  userProducts: [],
 });
 
 export default new Vuex.Store({
@@ -29,6 +30,9 @@ export default new Vuex.Store({
     },
     UPDATE_USER(state, payload) {
       state.user = Object.assign(state.user, payload);
+    },
+    UPDATE_USER_PRODUCTS(state, payload) {
+      state.userProducts = payload;
     },
   },
   actions: {
@@ -53,6 +57,10 @@ export default new Vuex.Store({
     logout(context) {
       context.commit('UPDATE_USER', getInitialState().user);
       context.commit('UPDATE_LOGGED_IN', getInitialState().loggedIn);
+    },
+    async getUserProducts(context) {
+      const response = await api.get(`/products?users_id=${context.state.user.id}`);
+      context.commit('UPDATE_USER_PRODUCTS', response.data);
     },
   },
 });

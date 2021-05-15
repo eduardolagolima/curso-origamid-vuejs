@@ -5,7 +5,7 @@
       class="product"
     >
       <ul
-        v-if="product.images"
+        v-if="product.images.length"
         class="images"
       >
         <li
@@ -52,7 +52,7 @@ export default {
   name: 'Product',
   props: {
     id: {
-      type: String,
+      type: Number,
       required: true,
     },
   },
