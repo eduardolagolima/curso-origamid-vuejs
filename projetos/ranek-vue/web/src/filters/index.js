@@ -5,7 +5,7 @@ const formatValue = (value) => {
     return 'Valor inválido';
   }
 
-  return value.toLocaleString('pt-BR', {
+  return formattedValue.toLocaleString('pt-BR', {
     style: 'currency',
     currency: 'BRL',
   });
