@@ -20,7 +20,7 @@
             }"
           >
             <img
-              v-if="images.length"
+              v-if="images.length > 0"
               :src="images[0].src"
               :alt="images[0].title"
             >

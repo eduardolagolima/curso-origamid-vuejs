@@ -13,7 +13,7 @@
       }"
     >
       <img
-        v-if="product.images.length"
+        v-if="product.images.length > 0"
         :src="product.images[0].src"
         :alt="product.images[0].title"
       >

@@ -5,7 +5,7 @@
       class="product"
     >
       <ul
-        v-if="product.images.length"
+        v-if="product.images.length > 0"
         class="images"
       >
         <li
