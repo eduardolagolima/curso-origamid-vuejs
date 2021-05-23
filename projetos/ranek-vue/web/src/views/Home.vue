@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import ProductsSearch from '../components/Products/ProductsSearch.vue';
 import ProductsListing from '../components/Products/ProductsListing.vue';
+import ProductsSearch from '../components/Products/ProductsSearch.vue';
 
 export default {
   name: 'Home',

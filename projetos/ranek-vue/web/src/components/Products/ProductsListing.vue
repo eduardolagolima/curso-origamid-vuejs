@@ -55,10 +55,10 @@
 </template>
 
 <script>
-import api from '../../services/api';
-import { serializeObject } from '../../helpers';
-
 import ProductsPagination from './ProductsPagination.vue';
+
+import { serializeObject } from '../../helpers';
+import api from '../../services/api';
 
 export default {
   name: 'ProductsListing',

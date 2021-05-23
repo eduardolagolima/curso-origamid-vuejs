@@ -1,10 +1,11 @@
 import Vue from 'vue';
+
 import App from './App.vue';
+import Loading from './components/Loading.vue';
+
+import formatValue from './filters';
 import router from './router';
 import store from './store';
-
-import Loading from './components/Loading.vue';
-import formatValue from './filters';
 
 Vue.config.productionTip = false;
 

@@ -5,10 +5,10 @@ import Home from '../views/Home.vue';
 import Login from '../views/Login.vue';
 import Product from '../views/Product.vue';
 import User from '../views/User/User.vue';
+import UserEditProfile from '../views/User/UserEditProfile.vue';
 import UserProducts from '../views/User/UserProducts.vue';
 import UserPurchases from '../views/User/UserPurchases.vue';
 import UserSales from '../views/User/UserSales.vue';
-import UserEditProfile from '../views/User/UserEditProfile.vue';
 
 Vue.use(VueRouter);
 
