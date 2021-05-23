@@ -14,7 +14,9 @@
           <router-link
             :to="{
               name: 'product',
-              params: { id }
+              params: {
+                id: id.toString()
+              }
             }"
           >
             <img

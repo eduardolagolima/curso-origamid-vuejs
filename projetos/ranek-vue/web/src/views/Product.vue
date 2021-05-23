@@ -34,31 +34,47 @@
         >
           Produto Vendido
         </button>
-        <button
+        <transition
           v-else
-          class="btn"
+          mode="out-in"
         >
-          Comprar
-        </button>
+          <Checkout
+            v-if="checkout"
+            :product="product"
+          />
+          <button
+            v-else
+            class="btn"
+            @click="checkout = true"
+          >
+            Comprar
+          </button>
+        </transition>
       </div>
     </div>
     <Loading v-else />
   </section>
 </template>
 <script>
+import Checkout from '../components/Checkout.vue';
+
 import api from '../services/api';
 
 export default {
   name: 'Product',
+  components: {
+    Checkout,
+  },
   props: {
     id: {
-      type: Number,
+      type: String,
       required: true,
     },
   },
   data() {
     return {
       product: null,
+      checkout: false,
     };
   },
   created() {

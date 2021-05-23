@@ -48,6 +48,7 @@ export default {
         price: '',
         description: '',
         images: [],
+        sold: false,
       },
     };
   },

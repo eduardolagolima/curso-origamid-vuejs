@@ -1,26 +1,28 @@
 <template>
   <form>
-    <label for="name">Nome</label>
-    <input
-      id="name"
-      v-model="name"
-      name="name"
-      type="text"
-    >
-    <label for="email">Email</label>
-    <input
-      id="email"
-      v-model="email"
-      name="email"
-      type="email"
-    >
-    <label for="password">Senha</label>
-    <input
-      id="password"
-      v-model="password"
-      name="password"
-      type="password"
-    >
+    <template v-if="showLoginData">
+      <label for="name">Nome</label>
+      <input
+        id="name"
+        v-model="name"
+        name="name"
+        type="text"
+      >
+      <label for="email">Email</label>
+      <input
+        id="email"
+        v-model="email"
+        name="email"
+        type="email"
+      >
+      <label for="password">Senha</label>
+      <input
+        id="password"
+        v-model="password"
+        name="password"
+        type="password"
+      >
+    </template>
     <label for="cep">Cep</label>
     <input
       id="cep"
@@ -97,6 +99,10 @@ export default {
       object: 'user',
       mutation: 'UPDATE_USER',
     }),
+    showLoginData() {
+      return !this.$store.state.loggedIn
+             || this.$route.name === 'user-edit-profile';
+    },
   },
   methods: {
     async searchCep() {

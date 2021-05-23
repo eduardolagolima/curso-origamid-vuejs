@@ -8,7 +8,7 @@
       :to="{
         name: 'product',
         params: {
-          id: product.id
+          id: product.id.toString()
         }
       }"
     >
